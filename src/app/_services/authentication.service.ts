@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 import { User } from '../_models';
 import { environment } from '../../environments/environment';
@@ -17,8 +17,8 @@ export class AuthenticationService {
     }
 
     public get currentUserValue(): User {
-        return this.currentUserSubject.value;
-    }
+			return this.currentUserSubject.value;
+		}
 
     login(username: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
@@ -31,12 +31,11 @@ export class AuthenticationService {
                     this.currentUserSubject.next(user);
                 }
                 return user;
-            }));
+            }))
     }
 
     logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
+      localStorage.removeItem('currentUser');
+      this.currentUserSubject.next(null);
     }
 }
