@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './_components';
+// import { RolesService } from './_services/roles.service'
 
 @NgModule({
   declarations: [

@@ -17,11 +17,11 @@ export class AuthenticationService {
     }
 
     public get currentUserValue(): User {
-			return this.currentUserSubject.value;
-		}
+	    return this.currentUserSubject.value;
+	}
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        return this.http.post<any>(`${environment.apiUrl}/api/users/authenticate`, { username, password })
             .pipe(map(user => {
                 console.log(user);
                 // login successful if there's a jwt token in the response
