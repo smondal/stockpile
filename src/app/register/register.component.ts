@@ -1,29 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { User } from '../_model/user';
-
-// @Component({
-//   selector: 'app-register',
-//   templateUrl: './register.component.html',
-//   styleUrls: ['./register.component.scss']
-// })
-// export class RegisterComponent implements OnInit {
-//   // registerForm: FormGroup;
-//   userModel = new User(1, 'sandip', 'sandip@gmail.com', 'sandip123', 'sandip123', '1234');
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-//   onSubmit(){
-//     console.log(this.userModel);
-//   }
-  
-
-// }
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
