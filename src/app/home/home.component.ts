@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   ){}
 
   ngOnInit() {
-    this.authenticationservice.currentUser.subscribe(x => x.is_admin ? this.adminuser = true : this.cusomeruser = true  )
+    // this.authenticationservice.currentUser.subscribe(x => x.role === "admin" ?  this.adminuser = true : this.cusomeruser = true )
   }
 
 }
