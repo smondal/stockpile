@@ -36,6 +36,6 @@ export class ListProductComponent implements OnInit {
   };
 
   addProduct(): void {
-    this.router.navigate(['add-user']);
+    this.router.navigate(['add-product']);
   };
 }
