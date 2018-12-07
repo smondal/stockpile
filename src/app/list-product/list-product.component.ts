@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../_services';
+import { ProductService, AlertService } from '../_services';
 import { Product } from '../_models';
 import { Router } from '@angular/router';
 
@@ -11,22 +11,27 @@ import { Router } from '@angular/router';
 export class ListProductComponent implements OnInit {
   products: Product[];
 
-  constructor(private productservice: ProductService, private router: Router) { }
+  constructor(private productservice: ProductService, private router: Router, private alertService: AlertService) { }
 
   ngOnInit() {
     this.productservice.getAll().subscribe(data => { this.products = data; });
   }
 
   deleteProduct(product: Product): void {
-    this.productservice.delete(product.id)
-      .subscribe(data => {
-        this.products = this.products.filter(u => u !== product);
-    })
+    this.productservice.delete(product._id)
+      .subscribe(
+          data => {
+            this.alertService.success('Product successful deleted', true);
+            this.products = this.products.filter(u => u !== product);
+          },
+          error => {
+            this.alertService.error(error);
+          });
   };
 
   editProduct(product: Product): void {
     localStorage.removeItem("editUserId");
-    localStorage.setItem("editUserId", product.id.toString());
+    localStorage.setItem("editUserId", product._id.toString());
     this.router.navigate(['edit-user']);
   };
 
