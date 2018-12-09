@@ -26,6 +26,10 @@ export class AuthenticationService {
       return this.currentUserValue.role === 'admin';
     }
 
+    getToken(){
+      return localStorage.getItem('token');
+    }
+
     login(username: string, password: string) {
       return this.http.post<any>(`${environment.apiUrl}/api/users/authenticate`, { username, password })
         .pipe(map(user => {
@@ -34,7 +38,9 @@ export class AuthenticationService {
           if (user && user.token) {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               localStorage.setItem('currentUser', JSON.stringify(user));
+              localStorage.setItem('token', user.token);
               this.currentUserSubject.next(user);
+              // this.currentUserSubject.next(user)
           }
           return user;
         })

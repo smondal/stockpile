@@ -16,6 +16,7 @@ import { ListProductComponent } from './list-product/list-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 // import { RolesService } from './_services/roles.service'
+import { TokenInterceptorService } from './_services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,11 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
