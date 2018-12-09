@@ -11,12 +11,12 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './_components';
-import { ProductsComponent } from './products/products.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AccessDeniedComponent } from './access-denied/access-denied.component';
 // import { RolesService } from './_services/roles.service'
 import { TokenInterceptorService } from './_services/token-interceptor.service';
+import { CheckoutModule } from "./checkout/checkout.module";
 
 @NgModule({
   declarations: [
@@ -26,17 +26,18 @@ import { TokenInterceptorService } from './_services/token-interceptor.service';
     LoginComponent,
     RegisterComponent,
     AlertComponent,
-    ProductsComponent,
     ListProductComponent,
     AddProductComponent,
     AccessDeniedComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CheckoutModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

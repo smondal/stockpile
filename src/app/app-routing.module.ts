@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'list-product', component: ListProductComponent, canActivate: [AuthGuard]},
   {path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  {path: '**', component: PageNotFoundComponent}
+  // {path: '**', component: PageNotFoundComponent}
 
 ];
 

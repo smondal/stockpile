@@ -19,4 +19,11 @@ export class ProductService{
   delete(id: number) {
     return this.http.delete(`${environment.apiUrl}/api/products` + '/' + id, {responseType: 'text'});
   }
+
+  getLocalCartProducts(): Product[] {
+    const products: Product[] = JSON.parse(localStorage.getItem('avct_item')) || [];
+
+    return products;
+  }
+
 }
