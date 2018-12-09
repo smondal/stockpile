@@ -6,14 +6,16 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AuthGuard } from './_guards';
+
 
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'list-product', component: ListProductComponent},
-  {path: 'add-product', component: AddProductComponent},
+  {path: 'list-product', component: ListProductComponent, canActivate: [AuthGuard]},
+  {path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: '**', component: PageNotFoundComponent}
 
