@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { ProductService, AlertService } from '../_services';
+import { ProductService, AlertService, AuthenticationService } from '../_services';
 
 
 @Component({
@@ -14,12 +14,15 @@ export class AddProductComponent implements OnInit {
   productForm: FormGroup;
   submitted = false;
   loading = false;
+  isAdmin = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private productservice: ProductService,
     private alertservice: AlertService,
-    private router: Router) { };
+    private router: Router,
+    private authenticationservice: AuthenticationService,
+    ) { };
 
   ngOnInit() {
     this.productForm = this.formBuilder.group({
@@ -28,6 +31,8 @@ export class AddProductComponent implements OnInit {
       type: ['', Validators.required],
       description: ['', Validators.required]
     });
+
+    this.isAdmin = this.authenticationservice.isAdmin();
   }
 
   get f() { return this.productForm.controls; }

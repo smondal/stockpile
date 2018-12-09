@@ -14,6 +14,7 @@ import { AlertComponent } from './_components';
 import { ProductsComponent } from './products/products.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
 // import { RolesService } from './_services/roles.service'
 
 @NgModule({
@@ -27,6 +28,7 @@ import { AddProductComponent } from './add-product/add-product.component';
     ProductsComponent,
     ListProductComponent,
     AddProductComponent,
+    AccessDeniedComponent,
   ],
   imports: [
     BrowserModule,

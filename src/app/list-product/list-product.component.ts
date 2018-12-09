@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService, AlertService } from '../_services';
-import { Product } from '../_models';
+import { AuthenticationService, ProductService, AlertService } from '../_services';
+import { Product, User } from '../_models';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-list-product',
@@ -10,11 +11,18 @@ import { Router } from '@angular/router';
 })
 export class ListProductComponent implements OnInit {
   products: Product[];
+  isAdmin: boolean;
 
-  constructor(private productservice: ProductService, private router: Router, private alertService: AlertService) { }
+  constructor(
+    private productservice: ProductService,
+    private router: Router,
+    private alertService: AlertService,
+    private authenticationService: AuthenticationService
+    ) { }
 
   ngOnInit() {
     this.productservice.getAll().subscribe(data => { this.products = data; });
+    this.isAdmin = this.authenticationService.isAdmin();
   }
 
   deleteProduct(product: Product): void {
