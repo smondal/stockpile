@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -13,7 +12,6 @@ import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './_components';
 import { ListProductComponent } from './list-product/list-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { AccessDeniedComponent } from './access-denied/access-denied.component';
 // import { RolesService } from './_services/roles.service'
 import { TokenInterceptorService } from './_services/token-interceptor.service';
 import { CheckoutModule } from "./checkout/checkout.module";
@@ -28,8 +26,6 @@ import { CheckoutModule } from "./checkout/checkout.module";
     AlertComponent,
     ListProductComponent,
     AddProductComponent,
-    AccessDeniedComponent,
-
   ],
   imports: [
     BrowserModule,
