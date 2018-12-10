@@ -11,17 +11,21 @@ import { User } from './_models';
 export class AppComponent {
   title = 'stockpile';
   currentUser: User;
-
+  isAdmin: boolean;
   constructor(
     private authenticationservice: AuthenticationService,
     private router: Router
   ){
     this.authenticationservice.currentUser.subscribe(x => this.currentUser = x);
+    this.isAdmin = this.authenticationservice.isAdmin();
   }
 
   logout(){
     this.authenticationservice.logout();
     this.router.navigate(['/login']);
   }
+
+
+
 
 }
