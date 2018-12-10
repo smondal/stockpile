@@ -23,7 +23,7 @@ export class AuthenticationService {
     }
 
     isAdmin(): boolean {
-      return this.currentUserValue.role === 'admin';
+      return this.currentUserValue && this.currentUserValue.role === 'admin';
     }
 
     getToken(){
